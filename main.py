@@ -7,7 +7,6 @@ from tkinter import filedialog, messagebox
 from logger import get_logger
 from ttkbootstrap.constants import *
 
-
 log = get_logger(__name__)
 
 with open("config.json", "r") as config_file:
@@ -29,7 +28,6 @@ class App(ttk.Window):
         self.file_menu.add_command(label="Import", command=self.import_files)
         self.menu_bar.add_cascade(label="File", menu=self.file_menu)
 
-
         # Create theme menu
         # Dark themes
         self.theme_menu = tk.Menu(self.menu_bar, tearoff=0)
@@ -42,7 +40,6 @@ class App(ttk.Window):
         # Light themes
         self.menu_bar.add_cascade(label="Theme", menu=self.theme_menu)
 
-        
         # Set style
         ttk.Style(config.get("theme", "darkly"))
 
@@ -61,7 +58,6 @@ class App(ttk.Window):
         self.create_widgets()
 
 
-
     def create_widgets(self):
         self.extract_button = ttk.Button(text="Soundbank to WAV", bootstyle=DARK,command=self.extract)
         self.extract_button.pack(side="bottom", pady=10)
@@ -75,7 +71,6 @@ class App(ttk.Window):
         self.scrollbar.config(command=self.listbox.yview)
 
 
-
     def change_theme(self, theme):
         ttk.Style(theme)
         config["theme"] = theme
@@ -85,6 +80,7 @@ class App(ttk.Window):
     def update_listbox(self, item_index, file_name):
         self.listbox.delete(item_index)
         self.listbox.insert(item_index, f"{item_index}. {file_name} <---")
+
 
     def import_files(self):
         self.file_selected = filedialog.askopenfilenames()
@@ -128,12 +124,9 @@ class App(ttk.Window):
                     return
 
         self.progress_bar["value"] = 0
-
         self.listbox.delete(0, "end")
         self.files.clear() 
         
-
-
 
     def extract(self):
         if len(self.files) == 0:
@@ -187,10 +180,6 @@ class App(ttk.Window):
         self.files.clear()
         
         messagebox.showinfo("SB2WAV", "Conversion done")
-
-
-
-        
 
 
 if __name__ == "__main__":
