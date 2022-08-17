@@ -63,7 +63,7 @@ class App(ttk.Window):
 
 
     def create_widgets(self):
-        self.extract_button = ttk.Button(text="WEM to WAV", bootstyle=DARK,command=self.extract)
+        self.extract_button = ttk.Button(text="Soundbank to WAV", bootstyle=DARK,command=self.extract)
         self.extract_button.pack(side="bottom", pady=10)
 
         self.wem_button = ttk.Button(text="WAV to WEM", bootstyle=DARK,command=self.wav_to_wem)
