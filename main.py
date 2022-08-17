@@ -9,6 +9,11 @@ from ttkbootstrap.constants import *
 
 log = get_logger(__name__)
 
+if not os.path.exists('config.json'):
+    log.error('config.json not found')
+if not os.path.exists('bin/'):
+    log.error('bin/ not found')
+
 with open("config.json", "r") as config_file:
     config = json.load(config_file)
 
